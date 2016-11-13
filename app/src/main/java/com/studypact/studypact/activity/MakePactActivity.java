@@ -81,6 +81,7 @@ public class MakePactActivity extends AppCompatActivity {
             array.put(pactInfo);
             object.put("pacts", array);
             Util.putIntoStore("pacts", object);
+            UsageTrackerService.refreshArray();
         } catch (Exception e) {
             Log.e(TAG, "exception in lazy remove", e);
         }

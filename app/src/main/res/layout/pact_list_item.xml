@@ -5,20 +5,8 @@
     android:layout_margin="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:paddingBottom="30dp">
-    <TextView
-        android:id="@+id/pact_name"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_weight="80"
-        android:background="@color/colorPrimary"
-        android:ellipsize="marquee"
-        android:maxLines="1"
-        android:text="Facebook"
-        android:textAlignment="center"
-        android:textColor="@android:color/white" />
-    <LinearLayout
+
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,11 +18,30 @@
             android:layout_gravity="center"
             android:src="@drawable/icon3"
             />
+
         <TextView
             android:id="@+id/pact_duration"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="duration"
-            />
-    </LinearLayout>
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/pact_mate"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/pact_name"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_weight="80"
+        android:background="@color/colorPrimary"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        android:text="Facebook"
+        android:textAlignment="center"
+        android:textColor="@android:color/white" />
+
 </LinearLayout>

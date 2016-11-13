@@ -36,7 +36,7 @@ import java.util.TreeMap;
 public class UsageTrackerService extends Service {
     Context mInstance = null;
     private static final String TAG = "UsageTracker";
-    private ArrayList<String> blockedApps = new ArrayList<>();
+    private static ArrayList<String> blockedApps = new ArrayList<>();
 
     @Nullable
     @Override
@@ -153,6 +153,19 @@ public class UsageTrackerService extends Service {
         }
 
         return currentApp;
+    }
+
+
+    public static void refreshArray() {
+        try {
+            JSONArray blockedAppsArr;
+            blockedAppsArr = new JSONArray(Util.getFromStore("locked_apps"));
+            for (int i = 0; i < blockedAppsArr.length(); i++) {
+                blockedApps.add(blockedAppsArr.getString(i));
+            }
+        } catch (Exception e) {
+
+        }
     }
 }
 

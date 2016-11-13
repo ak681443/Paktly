@@ -10,15 +10,17 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.studypact.studypact.R;
+import com.studypact.studypact.service.UsageTrackerService;
 
 public class SplashActivity extends AppCompatActivity {
 
-    public static boolean isFirstTime = false;
+    public static boolean isFirstTime = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        startService(new Intent(this, UsageTrackerService.class));
 
         Intent startActivity = null;
         if(isFirstTime) {

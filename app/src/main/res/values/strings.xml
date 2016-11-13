@@ -5,4 +5,5 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_choose_apps">ChooseAppsActivity</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_make_pact">MakePactActivity</string>
 </resources>

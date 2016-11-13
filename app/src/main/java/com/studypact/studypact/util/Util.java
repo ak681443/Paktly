@@ -6,6 +6,7 @@ import android.support.annotation.IdRes;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.studypact.studypact.appinstance.AppInstance;
 
@@ -81,4 +82,7 @@ public class Util {
         return ((int)end / ((24*60*60*1000))) -  ((int)start / ((24*60*60*1000)));
     }
 
+    public static void showToast(String msg) {
+        Toast.makeText(AppInstance.getInstance(), msg, Toast.LENGTH_SHORT).show();
+    }
 }

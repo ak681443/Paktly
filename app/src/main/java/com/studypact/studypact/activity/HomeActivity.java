@@ -1,5 +1,6 @@
 package com.studypact.studypact.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,19 +27,32 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(HomeActivity.this, MakePactActivity.class);
+                startActivityForResult(i, 1000);
             }
         });
 
+        populatePactList();
+    }
+
+    private void populatePactList() {
         JSONObject pacts = Util.getJSONFromStore("pacts");
         if(pacts.length() > 0){
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pact_list);
             recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             recyclerView.setAdapter(new PactListAdapter(pacts));
+            findViewById(R.id.empty_view).setVisibility(View.GONE);
         } else {
             findViewById(R.id.empty_view).setVisibility(View.VISIBLE);
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1000) {
+            populatePactList();
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }

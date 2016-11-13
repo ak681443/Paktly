@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">StudyPact</string>
+    <string name="app_name">Paktly</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_choose_apps">ChooseAppsActivity</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_activity_make_pact">MakePactActivity</string>
+    <string name="title_activity_choose_apps">Choose Ye Scourge</string>
+    <string name="title_activity_home">Paktly</string>
+    <string name="title_activity_make_pact">Paktly</string>
 </resources>

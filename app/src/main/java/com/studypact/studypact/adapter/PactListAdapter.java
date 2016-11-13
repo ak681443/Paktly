@@ -41,6 +41,7 @@ public class PactListAdapter extends RecyclerView.Adapter<PactListAdapter.PactVi
         AppInstance mInstance = AppInstance.getInstance();
         if(pacts != null){
             this.pacts = pacts;
+            pact_length = pacts.length();
         }
     }
 

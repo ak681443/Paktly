@@ -3,7 +3,10 @@ package com.studypact.studypact.action;
 import com.studypact.studypact.model.LoginModel;
 import com.studypact.studypact.util.Constants;
 
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
@@ -11,6 +14,6 @@ import retrofit2.http.POST;
  */
 
 public interface LoginAction {
-    @POST(Constants.server_url+Constants.login)
-    Call<Void> postLoginDetails(LoginModel loginModel);
+    @POST(Constants.login)
+    Call<String> postLoginDetails(@Body LoginModel loginModel);
 }

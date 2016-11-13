@@ -94,14 +94,15 @@ public class UsageTrackerService extends Service {
     }
 
     private boolean isPactPending() {
-        return Util.getJSONFromStore("pacts").length() > 0 || true;
+        return Util.getJSONFromStore("pacts").length() > 0;
     }
 
-    private static final int DAY_MILLIS = 24 * 60 * 60 * 1000;
+    public static final int DAY_MILLIS = 24 * 60 * 60 * 1000;
 
     private void lazyEvictPacts() {
         try {
             JSONObject object = Util.getJSONFromStore("pacts");
+            if (!object.has("pacts")) return;
             JSONArray array = object.getJSONArray("pacts");
             JSONArray output = new JSONArray();
             for (int i = 0; i < array.length(); i++) {

@@ -5,6 +5,6 @@ package com.studypact.studypact.util;
  */
 
 public class Constants {
-   public static final String server_url = "10.67.23.235/paktly";
-   public static final String login ="register/";
+   public static final String server_url = "http://10.67.2.145:8080/Paktly/";
+   public static final String login = "register";
 }

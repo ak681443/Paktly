@@ -17,8 +17,10 @@ public class LoginModel {
 
     @Attribute
     public String first_name;
+
     @Attribute
     public String last_name;
+
     @Attribute
     public String phone;
 

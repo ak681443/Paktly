@@ -42,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             recyclerView.setAdapter(new PactListAdapter(pacts));
             findViewById(R.id.empty_view).setVisibility(View.GONE);
+            recyclerView.getAdapter().notifyDataSetChanged();
         } else {
             findViewById(R.id.empty_view).setVisibility(View.VISIBLE);
         }
@@ -54,5 +55,11 @@ public class HomeActivity extends AppCompatActivity {
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populatePactList();
     }
 }

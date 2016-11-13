@@ -20,7 +20,11 @@ import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.QRCode;
 import com.studypact.studypact.R;
+import com.studypact.studypact.service.UsageTrackerService;
 import com.studypact.studypact.util.Util;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
@@ -54,10 +58,31 @@ public class MakePactActivity extends AppCompatActivity {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 //add pact here
+                addPact(result.getContents());
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private void addPact(String pactee) {
+        try {
+            JSONObject object = Util.getJSONFromStore("pacts");
+            if (!object.has("pacts")) {
+                object.put("pacts", new JSONArray());
+            }
+            JSONArray array = object.getJSONArray("pacts");
+            JSONObject pactInfo = new JSONObject();
+            pactInfo.put("name", pactee + "'s New Pact");
+            pactInfo.put("start_time", System.currentTimeMillis());
+            pactInfo.put("user_name", pactee);
+            pactInfo.put("end_time", System.currentTimeMillis() + UsageTrackerService.DAY_MILLIS);
+            array.put(pactInfo);
+            object.put("pacts", array);
+            Util.putIntoStore("pacts", object);
+        } catch (Exception e) {
+            Log.e(TAG, "exception in lazy remove", e);
         }
     }
 

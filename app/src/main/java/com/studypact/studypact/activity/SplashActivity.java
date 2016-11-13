@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.studypact.studypact.R;
 import com.studypact.studypact.service.UsageTrackerService;
+import com.studypact.studypact.util.Util;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         startService(new Intent(this, UsageTrackerService.class));
 
         Intent startActivity = null;
-        if(isFirstTime) {
+        if (!Util.getBooleanFromStore("is_setup")) {
             startActivity  = new Intent(this, ChooseAppsActivity.class);
         } else {
             startActivity = new Intent(this, HomeActivity.class);

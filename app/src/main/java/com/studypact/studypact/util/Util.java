@@ -12,6 +12,15 @@ import com.studypact.studypact.appinstance.AppInstance;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
 /**
  * Created by Arvind on 11/12/2016.
  */
@@ -85,4 +94,32 @@ public class Util {
     public static void showToast(String msg) {
         Toast.makeText(AppInstance.getInstance(), msg, Toast.LENGTH_SHORT).show();
     }
+
+    public static void doPOST(String url, JSONObject body) {
+        OkHttpClient client = new OkHttpClient();
+        RequestBody formBody = null;
+
+        new FormBody.Builder()
+                .add("message", "Your message")
+                .build();
+
+    }
+
+    public static String doGET(String url) {
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+            // Do something with the response.
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
+

@@ -53,6 +53,7 @@ public class AppGridAdapter extends RecyclerView.Adapter<AppGridAdapter.AppViewH
                         array.put(app.activityInfo.applicationInfo.packageName);
                     }
                     Util.putIntoStore("locked_apps", array.toString());
+                    Util.putBooleanFromStore("is_setup", true);
                     Intent intent = new Intent(mInstance, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     mInstance.startActivity(intent);

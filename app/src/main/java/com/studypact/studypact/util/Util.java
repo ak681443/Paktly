@@ -2,7 +2,7 @@ package com.studypact.studypact.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.IdRes;
+import androidx.annotation.IdRes;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;

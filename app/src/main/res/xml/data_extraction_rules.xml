@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <!--
+    Backup rules for Android 12 (API 31) and above.
+    See https://developer.android.com/about/versions/12/backup-restore
+    -->
+    <cloud-backup>
+        <include domain="sharedpref" path="." />
+        <exclude domain="sharedpref" path="device_prefs.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="sharedpref" path="." />
+        <exclude domain="sharedpref" path="device_prefs.xml" />
+    </device-transfer>
+</data-extraction-rules>
